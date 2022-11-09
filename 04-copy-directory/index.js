@@ -8,14 +8,18 @@ fs.mkdir(path.join(__dirname, 'files-copy'), { recursive: true }, (err) => {
   }
 });
 
-fs.readdir('files', (err, data) => {
+fs.readdir(path.join(__dirname, 'files'), (err, data) => {
   data.forEach((e) => {
-    fs.copyFile(`files/${e}`, `files-copy/${e}`, (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('done!');
-      }
-    });
+    fs.copyFile(
+      path.join(__dirname, `files/${e}`),
+      path.join(__dirname, `files-copy/${e}`),
+      (err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('done!');
+        }
+      },
+    );
   });
 });

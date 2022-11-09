@@ -1,5 +1,6 @@
 const readline = require('readline');
 const fs = require('fs');
+const path = require('path');
 
 let line = readline.createInterface({
   input: process.stdin,
@@ -8,7 +9,7 @@ let line = readline.createInterface({
 });
 
 line.prompt();
-fs.writeFile('text.txt', '', (err) => {
+fs.writeFile(path.join(__dirname, 'text.txt'), '', (err) => {
   if (err) {
     throw err;
   }
